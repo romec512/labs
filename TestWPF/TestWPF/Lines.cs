@@ -21,7 +21,7 @@ namespace TestWPF
         private bool show = false; 
 
 
-        public Lines(float _x1, float _x2, float _y1, float _y2)
+        public Lines(float _x1, float _x2, float _y1, float _y2)//конструктор 1
         {
             X1 = _x1;
             X2 = _x2;

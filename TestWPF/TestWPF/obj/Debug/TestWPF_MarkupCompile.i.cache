@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\prog\Labs\TestWPF\TestWPF\obj\Debug\
+E:\GitLabs\labs\TestWPF\TestWPF\obj\Debug\
 TestWPF
 none
 false
 DEBUG;TRACE
-E:\prog\Labs\TestWPF\TestWPF\App.xaml
+E:\GitLabs\labs\TestWPF\TestWPF\App.xaml
 31488373775
 
 14-2044833959
 131569487696
 LineWindow.xaml;MainWindow.xaml;RectangleWindow.xaml;
 
-False
+True
 
