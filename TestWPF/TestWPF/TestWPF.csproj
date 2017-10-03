@@ -58,6 +58,7 @@
     <Compile Include="LineWindow.xaml.cs">
       <DependentUpon>LineWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Point.cs" />
     <Compile Include="Rectangles.cs" />
     <Compile Include="RectangleWindow.xaml.cs">
       <DependentUpon>RectangleWindow.xaml</DependentUpon>
