@@ -44,10 +44,10 @@ namespace TestWPF
 
         public void ShowCircle(TextBox textBoxShow1, TextBox textBoxShow2, TextBox textBoxShow3, Canvas canvas1)
         {
-            if (show)
-            {
-                canvas1.Children.Clear();
-            }
+            //if (show)
+            //{
+            //    canvas1.Children.Clear();
+            //}
             X = this.GetData(textBoxShow1);
             Y = this.GetData(textBoxShow2);
             Radius = this.GetData(textBoxShow3);
@@ -69,7 +69,7 @@ namespace TestWPF
 
         public void MoveCircle(TextBox textBoxMove1, TextBox textBoxMove2, Canvas canvas1)
         {
-            canvas1.Children.Clear();
+           // canvas1.Children.Clear();
             X = this.GetData(textBoxMove1);
             Y = this.GetData(textBoxMove2);
             if ((X == -1) || (Y == -1))

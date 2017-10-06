@@ -20,7 +20,8 @@ namespace TestWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Circle circle = new Circle();
+        private Circle[] circle = new Circle[2];
+        private int i = 0;
 
         public MainWindow()
         {
@@ -29,18 +30,21 @@ namespace TestWPF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            circle.ShowCircle(textBoxShow1, textBoxShow2, textBoxShow3, canvas1);
+            circle[i] = new Circle();
+            circle[i].ShowCircle(textBoxShow1, textBoxShow2, textBoxShow3, canvas1);
+            i++;
         }
-
 
         private void buttonMove_click(object sender, EventArgs e)
         {
-            circle.MoveCircle(textBoxMove1, textBoxMove2, canvas1);
+            canvas1.Children.Clear();
+            foreach (Circle ie in circle)
+            ie.MoveCircle(textBoxMove1, textBoxMove2, canvas1);
         }
 
         private void buttonChange_Click(object sender, RoutedEventArgs e)
         {
-            circle.ChangeRadius(textBoxRadius, canvas1);
+            circle[1].ChangeRadius(textBoxRadius, canvas1);
         }
         
         private void menuRectangle_Click(object sender, EventArgs e)
