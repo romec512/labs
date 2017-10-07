@@ -26,8 +26,11 @@ namespace TestWPF
             Radius = _radius;
         }
 
-        public Circle()
+        public Circle(TextBox textBoxShow1, TextBox textBoxShow2, TextBox textBoxShow3)
         {
+            X = this.GetData(textBoxShow1);
+            Y = this.GetData(textBoxShow2);
+            Radius = this.GetData(textBoxShow3);
         }
 
         public int GetData(TextBox t) //Метод для получения значения из textbox
@@ -48,9 +51,7 @@ namespace TestWPF
             //{
             //    canvas1.Children.Clear();
             //}
-            X = this.GetData(textBoxShow1);
-            Y = this.GetData(textBoxShow2);
-            Radius = this.GetData(textBoxShow3);
+           
             if ((X == -1) || (Y == -1) || (Radius == -1))
             {
                 MessageBox.Show("Invalid input data!");
