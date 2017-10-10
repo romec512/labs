@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPF"
         mc:Ignorable="d"
-        Title="Окружность" Height="337.234" Width="666.642">
+        Title="Окружность" Height="380.234" Width="666.642">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="275*"/>
@@ -41,12 +41,14 @@
         <TextBox x:Name="textBoxMove1" ToolTip="X" HorizontalAlignment="Left" Height="26" Margin="173,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Background="White"/>
         <TextBox x:Name="textBoxMove2" ToolTip="Y" HorizontalAlignment="Left" Height="26" Margin="173,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Background="White"/>
         <TextBox x:Name="textBoxRadius" ToolTip="Radius" HorizontalAlignment="Left" Height="26" Margin="102,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Background="White"/>
-        <Button x:Name="buttonChange" Content="Change Radius" HorizontalAlignment="Left" Margin="78,255,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonChange_Click"/>
+        <Button x:Name="buttonChange" Content="Change Radius" HorizontalAlignment="Left" Margin="79,282,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonChange_Click"/>
         <Menu x:Name="menu"  HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="53">
             <MenuItem Header="Фигура">
                 <MenuItem Header="Прямоугольник" Click="menuRectangle_Click"/>
                 <MenuItem Header="Линия" Click="menuLine_Click"/>
             </MenuItem>
         </Menu>
+        <ComboBox HorizontalAlignment="Left" Name="comboBox1" Margin="145,130,0,0" VerticalAlignment="Top" Width="120" Text="Выберите окружность" />
+        <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" Margin="72,255,0,0" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

@@ -45,13 +45,8 @@ namespace TestWPF
             return x;
         }
 
-        public void ShowCircle(TextBox textBoxShow1, TextBox textBoxShow2, TextBox textBoxShow3, Canvas canvas1)
-        {
-            //if (show)
-            //{
-            //    canvas1.Children.Clear();
-            //}
-           
+        public void ShowCircle(Canvas canvas1)
+        {     
             if ((X == -1) || (Y == -1) || (Radius == -1))
             {
                 MessageBox.Show("Invalid input data!");
@@ -65,7 +60,6 @@ namespace TestWPF
             el.Stroke = Brushes.Red;
             el.StrokeThickness = 3;
             canvas1.Children.Add(el);
-            show = true;
         }
 
         public void MoveCircle(TextBox textBoxMove1, TextBox textBoxMove2, Canvas canvas1)
@@ -79,12 +73,11 @@ namespace TestWPF
                 return;
             }
             el.Margin = new Thickness(X, Y, 0, 0);
-            canvas1.Children.Add(el);
         }
 
         public void ChangeRadius(TextBox textBoxChange, Canvas canvas1)
         {
-            canvas1.Children.Clear();
+            //canvas1.Children.Clear();
             float rad = Radius;
             Radius = this.GetData(textBoxChange);
             el.Width = Radius;
@@ -95,7 +88,7 @@ namespace TestWPF
             {
                 el.Margin = new Thickness(X, Y, 0, 0);
             }
-            canvas1.Children.Add(el);
+            //canvas1.Children.Add(el);
         }
     }
 }
