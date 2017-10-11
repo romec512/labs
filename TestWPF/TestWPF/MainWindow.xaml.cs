@@ -32,11 +32,11 @@ namespace TestWPF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            circles.Add(new Circle(textBoxShow1, textBoxShow2, textBoxShow3));
-            ComboBoxItem item1 = new ComboBoxItem();
-            ComboBoxItem item2 = new ComboBoxItem();
+           circles.Add(new Circle(textBoxShow1, textBoxShow2, textBoxShow3));
+           ComboBoxItem item1 = new ComboBoxItem();
+           ComboBoxItem item2 = new ComboBoxItem();
            item1.Content ="Окружность "+i;
-            item2.Content = item1.Content;
+           item2.Content = item1.Content;
            comboBox1.Items.Add(item1);
            comboBox2.Items.Add(item2);
             foreach (Circle circle in circles)
@@ -51,10 +51,10 @@ namespace TestWPF
         {
             MoveNum = comboBox1.SelectedIndex; 
             canvas1.Children.Clear();
-            int i = 1;
+            int i = 0;
             foreach (Circle circle in circles)
             {
-                if (i == MoveNum+1)
+                if (i == MoveNum)
                 {
                     circle.MoveCircle(textBoxMove1, textBoxMove2, canvas1);
                 }
@@ -66,11 +66,11 @@ namespace TestWPF
         private void buttonChange_Click(object sender, RoutedEventArgs e)
         {
             canvas1.Children.Clear();
-            int i = 1;
+            int i = 0;
             ChangeNum = comboBox2.SelectedIndex;
             foreach(Circle circle in circles)
             {
-                if (i == ChangeNum+1)
+                if (i == ChangeNum)
                 {
                     circle.ChangeRadius(textBoxRadius, canvas1);
                 }

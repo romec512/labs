@@ -64,7 +64,6 @@ namespace TestWPF
 
         public void MoveCircle(TextBox textBoxMove1, TextBox textBoxMove2, Canvas canvas1)
         {
-           // canvas1.Children.Clear();
             X = this.GetData(textBoxMove1);
             Y = this.GetData(textBoxMove2);
             if ((X == -1) || (Y == -1))
@@ -77,7 +76,6 @@ namespace TestWPF
 
         public void ChangeRadius(TextBox textBoxChange, Canvas canvas1)
         {
-            //canvas1.Children.Clear();
             float rad = Radius;
             Radius = this.GetData(textBoxChange);
             el.Width = Radius;
@@ -88,7 +86,6 @@ namespace TestWPF
             {
                 el.Margin = new Thickness(X, Y, 0, 0);
             }
-            //canvas1.Children.Add(el);
         }
     }
 }

@@ -17,21 +17,18 @@ namespace TestWPF
         public float X2 { get; set; }
         public float Y1 { get; set; }
         public float Y2 { get; set; }
-        private Line line = new Line();
-        private bool show = false; 
-
-
-        public Lines(float _x1, float _x2, float _y1, float _y2)//конструктор 1
-        {
-            X1 = _x1;
-            X2 = _x2;
-            Y1 = _y1;
-            Y2 = _y2;
-        }
+        private Line line;
 
         public Lines()
         {
+        }
 
+        public Lines(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
+        {
+            X1 = this.GetData(textBox1);
+            X2 = this.GetData(textBox3);
+            Y1 = this.GetData(textBox2);
+            Y2 = this.GetData(textBox4);
         }
 
 
@@ -47,21 +44,14 @@ namespace TestWPF
             return x;
         }
 
-        public void ShowLine(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4, Canvas canvas1)
+        public void ShowLine(Canvas canvas1)
         {
-            if (show)
-            {
-                canvas1.Children.Clear();
-            }
-            X1 = this.GetData(textBox1);
-            Y1 = this.GetData(textBox2);
-            X2 = this.GetData(textBox3);
-            Y2 = this.GetData(textBox4);
             if ((X1 == -1) || (Y1 == -1) || (X2 == -1) || (Y2 == -1))
             {
                 MessageBox.Show("Invalid input data!");
                 return;
             }
+            line = new Line();
             line.X1 = X1;
             line.X2 = X2;
             line.Y1 = Y1;
@@ -69,7 +59,14 @@ namespace TestWPF
             line.Stroke = Brushes.Red;
             line.StrokeThickness = 3;
             canvas1.Children.Add(line);
-            show = true; 
+        }
+
+        public void ChangeLine(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
+        {
+            this.X1 = this.GetData(textBox1);
+            this.Y1 = this.GetData(textBox2);
+            this.X2 = this.GetData(textBox3);
+            this.Y2 = this.GetData(textBox4);
         }
     }
 }
