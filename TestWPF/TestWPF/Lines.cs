@@ -13,10 +13,8 @@ namespace TestWPF
 {
     class Lines
     {
-        public float X1 { get; set; }
-        public float X2 { get; set; }
-        public float Y1 { get; set; }
-        public float Y2 { get; set; }
+        public Point point1 { get; set; }
+        public Point point2 { get; set; }
         private Line line;
 
         public Lines()
@@ -25,10 +23,8 @@ namespace TestWPF
 
         public Lines(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
         {
-            X1 = this.GetData(textBox1);
-            X2 = this.GetData(textBox3);
-            Y1 = this.GetData(textBox2);
-            Y2 = this.GetData(textBox4);
+            point1 = new Point(textBox1, textBox2);
+            point2 = new Point(textBox3, textBox4);
         }
 
 
@@ -46,16 +42,16 @@ namespace TestWPF
 
         public void ShowLine(Canvas canvas1)
         {
-            if ((X1 == -1) || (Y1 == -1) || (X2 == -1) || (Y2 == -1))
+            if ((point1.X == -1) || (point1.Y == -1) || (point2.X == -1) || (point2.Y == -1))
             {
                 MessageBox.Show("Invalid input data!");
                 return;
             }
             line = new Line();
-            line.X1 = X1;
-            line.X2 = X2;
-            line.Y1 = Y1;
-            line.Y2 = Y2;
+            line.X1 = point1.X;
+            line.X2 = point2.X;
+            line.Y1 = point1.Y;
+            line.Y2 = point2.Y;
             line.Stroke = Brushes.Red;
             line.StrokeThickness = 3;
             canvas1.Children.Add(line);
@@ -63,11 +59,9 @@ namespace TestWPF
 
         public void ChangeLine(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
         {
-            int x1 = this.GetData(textBox1);
-            int y1 = this.GetData(textBox2);
-            int x2 = this.GetData(textBox3);
-            int y2 = this.GetData(textBox4);
-            if (x1 == -1 || x2 == -1 || y1 == -1 || y2 == -1)
+            point1.ChangePoint(textBox1, textBox2);
+            point2.ChangePoint(textBox3, textBox4);
+            if (point1.X == -1 || point2.X == -1 || point1.Y == -1 || point2.Y == -1)
             {
                 MessageBox.Show("Invalid input data!");
                 return;
