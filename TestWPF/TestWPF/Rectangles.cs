@@ -17,7 +17,6 @@ namespace TestWPF
         public int Height { get; set; }
         public float X { get; set; }
         public float Y { get; set; }
-        private bool show = false;
         Rectangle rect;
 
 
@@ -33,12 +32,12 @@ namespace TestWPF
             return x;
         }
 
-        public Rectangles(float _x, float _y, int _height, int _width)
+        public Rectangles(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
         {
-            X = _x;
-            Y = _y;
-            Height = _height;
-            Width = _width;
+            X = this.GetData(textBox1);
+            Y = this.GetData(textBox2);
+            Height = this.GetData(textBox3);
+            Width = this.GetData(textBox4);
         }
 
         public Rectangles()
@@ -47,16 +46,8 @@ namespace TestWPF
         }
 
 
-        public void ShowRectangle(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4, Canvas canvas1)
-        {
-            if (show)
-            {
-                canvas1.Children.Clear();
-            }
-            X = this.GetData(textBox1);
-            Y = this.GetData(textBox2);
-            Width = this.GetData(textBox3);
-            Height = this.GetData(textBox4);
+        public void ShowRectangle(Canvas canvas1)
+        { 
             if ((X == -1) || (Y == -1) || (Width == -1) || (Height == -1))
             {
                 MessageBox.Show("Invalid input data!");
@@ -70,12 +61,10 @@ namespace TestWPF
             rect.Stroke = Brushes.Red;
             rect.StrokeThickness = 3;
             canvas1.Children.Add(rect);
-            show = true;
         }
 
-        public void MoveRectangle(TextBox textBox1, TextBox textBox2, Canvas canvas1)
+        public void MoveRectangle(TextBox textBox1, TextBox textBox2)
         {
-            canvas1.Children.Clear();
             X = this.GetData(textBox1);
             Y = this.GetData(textBox2);
             if ((X == -1) || (Y == -1))
@@ -84,12 +73,10 @@ namespace TestWPF
                 return;
             }
             rect.Margin = new Thickness(X, Y, 0, 0);
-            canvas1.Children.Add(rect);
         }
 
-        public void ChangeRectangle(TextBox textBox1, TextBox textBox2, Canvas canvas1)
+        public void ChangeRectangle(TextBox textBox1, TextBox textBox2)
         {
-            canvas1.Children.Clear();
             Width = this.GetData(textBox1);
             Height = this.GetData(textBox2);
             if ((Width == -1) || (Height == -1))
@@ -107,7 +94,6 @@ namespace TestWPF
             {
                rect.Margin = new Thickness(X, Y, 0, 0);
             }
-            canvas1.Children.Add(rect);
         }
     }
 }

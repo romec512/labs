@@ -20,7 +20,10 @@ namespace TestWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Circle circle = new Circle();
+        private List<Circle> circles = new List<Circle>();
+        private int ChangeNum = 0;
+        private int MoveNum = 0;
+        private int i = 1;
 
         public MainWindow()
         {
@@ -29,18 +32,51 @@ namespace TestWPF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            circle.ShowCircle(textBoxShow1, textBoxShow2, textBoxShow3, canvas1);
+           circles.Add(new Circle(textBoxShow1, textBoxShow2, textBoxShow3));
+           ComboBoxItem item1 = new ComboBoxItem();
+           ComboBoxItem item2 = new ComboBoxItem();
+           item1.Content ="Окружность "+i;
+           item2.Content = item1.Content;
+           comboBox1.Items.Add(item1);
+           comboBox2.Items.Add(item2);
+            foreach (Circle circle in circles)
+            {
+                circle.ShowCircle(canvas1);
+            }
+            
+            i++;
         }
-
 
         private void buttonMove_click(object sender, EventArgs e)
         {
-            circle.MoveCircle(textBoxMove1, textBoxMove2, canvas1);
+            MoveNum = comboBox1.SelectedIndex; 
+            canvas1.Children.Clear();
+            int i = 0;
+            foreach (Circle circle in circles)
+            {
+                if (i == MoveNum)
+                {
+                    circle.MoveCircle(textBoxMove1, textBoxMove2, canvas1);
+                }
+                circle.ShowCircle(canvas1);
+               i++;
+            }
         }
 
         private void buttonChange_Click(object sender, RoutedEventArgs e)
         {
-            circle.ChangeRadius(textBoxRadius, canvas1);
+            canvas1.Children.Clear();
+            int i = 0;
+            ChangeNum = comboBox2.SelectedIndex;
+            foreach(Circle circle in circles)
+            {
+                if (i == ChangeNum)
+                {
+                    circle.ChangeRadius(textBoxRadius, canvas1);
+                }
+                circle.ShowCircle(canvas1);
+                i++;
+            }
         }
         
         private void menuRectangle_Click(object sender, EventArgs e)

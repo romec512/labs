@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TestWPF"
         mc:Ignorable="d"
         Title="Прямоугольник" Height="363.901" Width="666.642">
-    <Grid>
+    <Grid Margin="0,0,0,-47">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black" Offset="0"/>
@@ -38,7 +38,7 @@
         <TextBox x:Name="textBoxMove1" ToolTip="X" HorizontalAlignment="Left" Height="26" Margin="176,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Background="White"/>
         <TextBox x:Name="textBoxMove2" ToolTip="Y" HorizontalAlignment="Left" Height="26" Margin="176,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Background="White"/>
         <TextBox x:Name="textBoxChange1" ToolTip="Width" HorizontalAlignment="Left" Height="26" Margin="112,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Background="White"/>
-        <Button x:Name="buttonChange" Content="Change size" HorizontalAlignment="Left" Margin="86,291,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonChange_Click"/>
+        <Button x:Name="buttonChange" Content="Change size" HorizontalAlignment="Left" Margin="90,338,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonChange_Click"/>
         <TextBox x:Name="textBoxChange2" ToolTip="Height" HorizontalAlignment="Left" Height="26" Margin="112,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
         <Menu x:Name="menu"  HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="53">
             <MenuItem Header="Фигура" RenderTransformOrigin="0.5,0.5">
@@ -46,5 +46,7 @@
                 <MenuItem Header="Линия" Click="MenuLine_Click"/>
             </MenuItem>
         </Menu>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="147,104,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" Margin="90,294,0,0" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
