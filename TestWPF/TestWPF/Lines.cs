@@ -63,10 +63,15 @@ namespace TestWPF
 
         public void ChangeLine(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
         {
-            this.X1 = this.GetData(textBox1);
-            this.Y1 = this.GetData(textBox2);
-            this.X2 = this.GetData(textBox3);
-            this.Y2 = this.GetData(textBox4);
+            int x1 = this.GetData(textBox1);
+            int y1 = this.GetData(textBox2);
+            int x2 = this.GetData(textBox3);
+            int y2 = this.GetData(textBox4);
+            if (x1 == -1 || x2 == -1 || y1 == -1 || y2 == -1)
+            {
+                MessageBox.Show("Invalid input data!");
+                return;
+            }
         }
     }
 }

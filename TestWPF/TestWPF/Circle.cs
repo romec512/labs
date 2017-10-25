@@ -13,23 +13,22 @@ namespace TestWPF
 {
     class Circle
     {
-        public float X { get; set; }
-        public float Y { get; set; }
+        //public float X { get; set; }
+        //public float Y { get; set; }
+        public Point point { get; set; }
         public float Radius { get; set; }
-        private bool show;
         Ellipse el;
 
         public Circle(float _x, float _y, int _radius)
         {
-            X = _x;
-            Y = _y;
+            point.X = _x;
+            point.Y = _y;
             Radius = _radius;
         }
 
         public Circle(TextBox textBoxShow1, TextBox textBoxShow2, TextBox textBoxShow3)
         {
-            X = this.GetData(textBoxShow1);
-            Y = this.GetData(textBoxShow2);
+            point = new Point(textBoxShow1, textBoxShow2);
             Radius = this.GetData(textBoxShow3);
         }
 
@@ -47,7 +46,7 @@ namespace TestWPF
 
         public void ShowCircle(Canvas canvas1)
         {     
-            if ((X == -1) || (Y == -1) || (Radius == -1))
+            if ((point.X == -1) || (point.Y == -1) || (Radius == -1))
             {
                 MessageBox.Show("Invalid input data!");
                 return;
@@ -55,7 +54,7 @@ namespace TestWPF
             el = new Ellipse();
             el.Width = Radius;
             el.Height = Radius;
-            el.Margin = new Thickness(X, Y, 0, 0);
+            el.Margin = new Thickness(point.X, point.Y, 0, 0);
             el.VerticalAlignment = VerticalAlignment.Top;
             el.Stroke = Brushes.Red;
             el.StrokeThickness = 3;
@@ -64,27 +63,31 @@ namespace TestWPF
 
         public void MoveCircle(TextBox textBoxMove1, TextBox textBoxMove2, Canvas canvas1)
         {
-            X = this.GetData(textBoxMove1);
-            Y = this.GetData(textBoxMove2);
-            if ((X == -1) || (Y == -1))
+            point.ChangePoint(textBoxMove1, textBoxMove2);
+            if ((point.X == -1) || (point.Y == -1))
             {
                 MessageBox.Show("Invalid input data!");
                 return;
             }
-            el.Margin = new Thickness(X, Y, 0, 0);
+            el.Margin = new Thickness(point.X, point.Y, 0, 0);
         }
 
         public void ChangeRadius(TextBox textBoxChange, Canvas canvas1)
         {
             float rad = Radius;
             Radius = this.GetData(textBoxChange);
+            if (Radius == -1)
+            {
+                MessageBox.Show("Invalid input data!");
+                return;
+            }
             el.Width = Radius;
             el.Height = Radius;
-            X -= Radius / 2 - rad / 2;
-            Y -= Radius / 2 - rad / 2;
-            if (X > 0 && Y > 0)
+            point.X -= Radius / 2 - rad / 2;
+            point.Y -= Radius / 2 - rad / 2;
+            if (point.X > 0 && point.Y > 0)
             {
-                el.Margin = new Thickness(X, Y, 0, 0);
+                el.Margin = new Thickness(point.X, point.Y, 0, 0);
             }
         }
     }
