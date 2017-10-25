@@ -20,7 +20,9 @@ namespace TestWPF
     public partial class LineWindow : Window
     {
 
-        private Lines line = new Lines();
+       // private Lines line = new Lines();
+        private List<Lines> lines = new List<Lines>();
+        private int i = 1;
         public LineWindow()
         {
             InitializeComponent();
@@ -41,8 +43,32 @@ namespace TestWPF
         }
 
         private void buttonShow_Click(object sender, RoutedEventArgs e)
-        { 
-            line.ShowLine(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4, canvas1);
+        {
+            lines.Add(new Lines(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4));
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Content = "Линия " + i;
+            comboBox1.Items.Add(item1);
+            foreach(Lines line in lines)
+            {
+                line.ShowLine(canvas1);
+            }
+            i++;
+        }
+
+        private void ButtonChange_Click(object sender, RoutedEventArgs e)
+        {
+            canvas1.Children.Clear();
+            int i = 0;
+            int ChangeNum = comboBox1.SelectedIndex;
+            foreach(Lines line in lines)
+            {
+                if (i == ChangeNum)
+                {
+                    line.ChangeLine(textBoxChange1, textBoxChange2, textBoxChange3, textBoxChange4);
+                }
+                line.ShowLine(canvas1);
+                i++;
+            }
         }
     }
 }
