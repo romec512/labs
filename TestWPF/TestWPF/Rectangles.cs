@@ -15,8 +15,7 @@ namespace TestWPF
     {
         public int Width { get; set; }
         public int Height { get; set; }
-        public float X { get; set; }
-        public float Y { get; set; }
+        public Point point { get; set; }
         Rectangle rect;
 
 
@@ -34,8 +33,7 @@ namespace TestWPF
 
         public Rectangles(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
         {
-            X = this.GetData(textBox1);
-            Y = this.GetData(textBox2);
+            point = new Point(textBox1, textBox2);
             Height = this.GetData(textBox3);
             Width = this.GetData(textBox4);
         }
@@ -48,7 +46,7 @@ namespace TestWPF
 
         public void ShowRectangle(Canvas canvas1)
         { 
-            if ((X == -1) || (Y == -1) || (Width == -1) || (Height == -1))
+            if ((point.X == -1) || (point.Y == -1) || (Width == -1) || (Height == -1))
             {
                 MessageBox.Show("Invalid input data!");
                 return;
@@ -56,7 +54,7 @@ namespace TestWPF
             rect = new Rectangle();
             rect.Width = Width;
             rect.Height = Height;
-            rect.Margin = new Thickness(X, Y, 0, 0);
+            rect.Margin = new Thickness(point.X, point.Y, 0, 0);
             rect.VerticalAlignment = VerticalAlignment.Top;
             rect.Stroke = Brushes.Red;
             rect.StrokeThickness = 3;
@@ -65,14 +63,13 @@ namespace TestWPF
 
         public void MoveRectangle(TextBox textBox1, TextBox textBox2)
         {
-            X = this.GetData(textBox1);
-            Y = this.GetData(textBox2);
-            if ((X == -1) || (Y == -1))
+            point.ChangePoint(textBox1, textBox2);
+            if ((point.X == -1) || (point.Y == -1))
             {
                 MessageBox.Show("Invalid input data!");
                 return;
             }
-            rect.Margin = new Thickness(X, Y, 0, 0);
+            rect.Margin = new Thickness(point.X, point.Y, 0, 0);
         }
 
         public void ChangeRectangle(TextBox textBox1, TextBox textBox2)
@@ -86,13 +83,13 @@ namespace TestWPF
             }
             int width = Width;
             int height = Height;
-            X -= Math.Abs(Width / 2 - width / 2);
-            Y -= Math.Abs(Height / 2 - height / 2);
+            point.X -= Math.Abs(Width / 2 - width / 2);
+            point.Y -= Math.Abs(Height / 2 - height / 2);
             rect.Width = Width;
             rect.Height = Height;
-            if (X > 0 && Y > 0)
+            if (point.X > 0 && point.Y > 0)
             {
-               rect.Margin = new Thickness(X, Y, 0, 0);
+               rect.Margin = new Thickness(point.X, point.Y, 0, 0);
             }
         }
     }
