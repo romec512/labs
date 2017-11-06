@@ -52,7 +52,7 @@ namespace TestWPF
                 return;
             }
             el = new Ellipse();
-            el.Width = Radius;
+            el.Width = this.Radius;
             el.Height = Radius;
             el.Margin = new Thickness(point.X, point.Y, 0, 0);
             el.VerticalAlignment = VerticalAlignment.Top;
