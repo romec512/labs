@@ -92,5 +92,12 @@ namespace TestWPF
             window.Show();
             this.Close();
         }
+
+        private void menuRing_Click(object sender, RoutedEventArgs e)
+        {
+            RingWindow window = new RingWindow();
+            window.Show();
+            this.Close();
+        }
     }
 }
