@@ -32,19 +32,22 @@ namespace TestWPF
 
         private void button1_Click(object sender, EventArgs e)
         {
-           circles.Add(new Circle(textBoxShow1, textBoxShow2, textBoxShow3));
-           ComboBoxItem item1 = new ComboBoxItem();
-           ComboBoxItem item2 = new ComboBoxItem();
-           item1.Content ="Окружность "+i;
-           item2.Content = item1.Content;
-           comboBox1.Items.Add(item1);
-           comboBox2.Items.Add(item2);
-            foreach (Circle circle in circles)
+            if (TFigure.IsInto(textBoxShow1, textBoxShow2, textBoxShow3))
             {
-                circle.ShowCircle(canvas1);
+                circles.Add(new Circle(textBoxShow1, textBoxShow2, textBoxShow3));
+                ComboBoxItem item1 = new ComboBoxItem();
+                ComboBoxItem item2 = new ComboBoxItem();
+                item1.Content = "Окружность " + i;
+                item2.Content = item1.Content;
+                comboBox1.Items.Add(item1);
+                comboBox2.Items.Add(item2);
+                foreach (Circle circle in circles)
+                {
+                    circle.Show(canvas1);
+                }
+
+                i++;
             }
-            
-            i++;
         }
 
         private void buttonMove_click(object sender, EventArgs e)
@@ -56,9 +59,10 @@ namespace TestWPF
             {
                 if (i == MoveNum)
                 {
-                    circle.MoveCircle(textBoxMove1, textBoxMove2, canvas1);
+                    if(TFigure.IsInto(textBoxMove1, textBoxMove2, circle.Radius))
+                        circle.Move(textBoxMove1, textBoxMove2);
                 }
-                circle.ShowCircle(canvas1);
+                circle.Show(canvas1);
                i++;
             }
         }
@@ -72,9 +76,10 @@ namespace TestWPF
             {
                 if (i == ChangeNum)
                 {
-                    circle.ChangeRadius(textBoxRadius, canvas1);
+                    if (TFigure.IsInto(circle.point.X, circle.point.Y, textBoxRadius))
+                        circle.ChangeRadius(textBoxRadius, canvas1);
                 }
-                circle.ShowCircle(canvas1);
+                circle.Show(canvas1);
                 i++;
             }
         }
@@ -96,6 +101,13 @@ namespace TestWPF
         private void menuRing_Click(object sender, RoutedEventArgs e)
         {
             RingWindow window = new RingWindow();
+            window.Show();
+            this.Close();
+        }
+
+        private void MenuRhombus_Click(object sender, RoutedEventArgs e)
+        {
+            RhombusWindow window = new RhombusWindow();
             window.Show();
             this.Close();
         }

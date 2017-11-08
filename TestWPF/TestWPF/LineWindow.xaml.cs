@@ -70,5 +70,20 @@ namespace TestWPF
                 i++;
             }
         }
+
+
+        private void MenuRhombus_Click(object sender, RoutedEventArgs e)
+        {
+            RhombusWindow window = new RhombusWindow();
+            window.Show();
+            this.Close();
+        }
+
+        private void MenuRing_Click(object sender, RoutedEventArgs e)
+        {
+            RingWindow window = new RingWindow();
+            window.Show();
+            this.Close();
+        }
     }
 }

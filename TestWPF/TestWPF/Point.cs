@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace TestWPF
@@ -18,7 +19,11 @@ namespace TestWPF
             this.X = GetData(textBox1);
             this.Y = GetData(textBox2);
         }
+        
+        public Point()
+        {
 
+        }
         public int GetData(TextBox t) //Метод для получения значения из textbox
         {
             int x = -1;
@@ -33,8 +38,19 @@ namespace TestWPF
 
         public void ChangePoint(TextBox textBox1, TextBox textBox2)
         {
-            this.X = GetData(textBox1);
-            this.Y = GetData(textBox2);
+            float X = GetData(textBox1);
+            float Y = GetData(textBox2);
+            if(X != -1 || Y != -1)
+            {
+                this.X = X;
+                this.Y = Y;
+            }
+            else
+            {
+                MessageBox.Show("Invalid input data!");
+                return;
+            }
+
         }
     }
 }

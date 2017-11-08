@@ -61,11 +61,6 @@ namespace TestWPF
         {
             point1.ChangePoint(textBox1, textBox2);
             point2.ChangePoint(textBox3, textBox4);
-            if (point1.X == -1 || point2.X == -1 || point1.Y == -1 || point2.Y == -1)
-            {
-                MessageBox.Show("Invalid input data!");
-                return;
-            }
         }
     }
 }
