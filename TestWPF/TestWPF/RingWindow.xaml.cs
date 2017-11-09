@@ -30,18 +30,21 @@ namespace TestWPF
 
         public void buttonShow_Click(object sender, RoutedEventArgs e)
         {
-            rings.Add(new Ring(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4));
-            ComboBoxItem item1 = new ComboBoxItem();
-            ComboBoxItem item2 = new ComboBoxItem();
-            item1.Content = "Кольцо " + i;
-            item2.Content = item1.Content;
-            comboBox1.Items.Add(item1);
-            comboBox2.Items.Add(item2);
-            foreach (Ring ring in rings)
+            if (TFigure.IsInto(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4))
             {
-                ring.ShowRing(canvas1);
+                rings.Add(new Ring(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4));
+                ComboBoxItem item1 = new ComboBoxItem();
+                ComboBoxItem item2 = new ComboBoxItem();
+                item1.Content = "Кольцо " + i;
+                item2.Content = item1.Content;
+                comboBox1.Items.Add(item1);
+                comboBox2.Items.Add(item2);
+                foreach (Ring ring in rings)
+                {
+                    ring.Show(canvas1);
+                }
+                i++;
             }
-            i++;
         }
 
         public void ButtonChange_Click(object sender, RoutedEventArgs e)
@@ -53,21 +56,33 @@ namespace TestWPF
             {
                 if(changeNum == i)
                 {
-                    ring.ChangeRing(textBoxChange1, textBoxChange2);
+                    if(TFigure.IsInto(ring.point.X, ring.point.Y, textBoxChange2, textBoxChange2))
+                        ring.ChangeRing(textBoxChange1, textBoxChange2);
                 }
-                ring.ShowRing(canvas1);
+                ring.Show(canvas1);
                 i++;
             }
         }
 
         public void MenuCircle_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow window = new MainWindow();
+            window.Show();
+            this.Close();
         }
 
         public void MenuRectangle_Click(object sender, RoutedEventArgs e)
         {
+            RectangleWindow window = new RectangleWindow();
+            window.Show();
+            this.Close();
+        }
 
+        public void MenuLine_Click(object sender, RoutedEventArgs e)
+        {
+            LineWindow window = new LineWindow();
+            window.Show();
+            this.Close();
         }
 
         private void buttonMove_Click(object sender, RoutedEventArgs e)
@@ -79,11 +94,20 @@ namespace TestWPF
             {
                 if(moveNum == i)
                 {
-                    ring.MoveRing(textBoxMove1, textBoxMove2);
+                    if(TFigure.IsInto(textBoxMove1, textBoxMove2, ring.BigRadius, ring.BigRadius))
+                        ring.Move(textBoxMove1, textBoxMove2);
                 }
-                ring.ShowRing(canvas1);
+                ring.Show(canvas1);
                 i++;
             }
+        }
+
+
+        private void MenuRhombus_Click(object sender, RoutedEventArgs e)
+        {
+            RhombusWindow window = new RhombusWindow();
+            window.Show();
+            this.Close();
         }
     }
 }

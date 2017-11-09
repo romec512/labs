@@ -63,10 +63,15 @@
     <Compile Include="RectangleWindow.xaml.cs">
       <DependentUpon>RectangleWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Rhombus.cs" />
+    <Compile Include="RhombusWindow.xaml.cs">
+      <DependentUpon>RhombusWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ring.cs" />
     <Compile Include="RingWindow.xaml.cs">
       <DependentUpon>RingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TFigure.cs" />
     <Page Include="LineWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +90,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RectangleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RhombusWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

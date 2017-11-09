@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPF"
         mc:Ignorable="d"
-        Title="RingWindow" Height="467.175" Width="506">
+        Title="RingWindow" WindowState="Maximized" Height="467.175" Width="506">
     <Grid Margin="0,0,2,0">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -38,6 +38,8 @@
             <MenuItem Header="Фигура" RenderTransformOrigin="0.5,0.5">
                 <MenuItem Header="Окружность" Click="MenuCircle_Click"/>
                 <MenuItem Header="Прямоугольник" Click="MenuRectangle_Click"/>
+                <MenuItem Header="Линия" Click="MenuLine_Click"/>
+                <MenuItem Header="Ромб" Click="MenuRhombus_Click"/>
             </MenuItem>
         </Menu>
         <TextBox x:Name="textBoxMove1" ToolTip="X" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Margin="135,27,0,0"/>

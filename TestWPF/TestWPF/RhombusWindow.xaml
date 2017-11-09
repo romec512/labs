@@ -1,11 +1,11 @@
-﻿<Window x:Class="TestWPF.RectangleWindow"
+﻿<Window x:Class="TestWPF.RhombusWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPF"
         mc:Ignorable="d"
-        Title="Прямоугольник" WindowState="Maximized" Height="363.901" Width="666.642">
+        Title="RhombusWindow" WindowState="Maximized" Height="452.255" Width="729.699">
     <Grid Margin="0,0,0,-47">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -45,7 +45,7 @@
                 <MenuItem Header="Окружность" Click="MenuCircle_Click"/>
                 <MenuItem Header="Линия" Click="MenuLine_Click"/>
                 <MenuItem Header="Кольцо" Click="MenuRing_Click"/>
-                <MenuItem Header="Ромб" Click="MenuRhombus_Click"/>
+                <MenuItem Header="Прямоугольник" Click="MenuRectangle_Click"/>
             </MenuItem>
         </Menu>
         <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="147,104,0,0" VerticalAlignment="Top" Width="120"/>

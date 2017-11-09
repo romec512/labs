@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPF"
         mc:Ignorable="d"
-        Title="Окружность" Height="380.234" Width="666.642">
+        Title="Окружность" WindowState="Maximized" Height="380.234" Width="666.642">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="275*"/>
@@ -47,6 +47,7 @@
                 <MenuItem Header="Прямоугольник" Click="menuRectangle_Click"/>
                 <MenuItem Header="Линия" Click="menuLine_Click"/>
                 <MenuItem Header="Кольцо" Click="menuRing_Click"/>
+                <MenuItem Header="Ромб" Click="MenuRhombus_Click"/>
             </MenuItem>
         </Menu>
         <ComboBox HorizontalAlignment="Left" Name="comboBox1" Margin="145,130,0,0" VerticalAlignment="Top" Width="120" Text="Выберите окружность" />
