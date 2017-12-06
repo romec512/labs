@@ -23,6 +23,14 @@ namespace TestWPF
             point.X = x;
             point.Y = y;
         }
+        public Rhombus(int _x, int _y, int _width, int _height)
+        {
+            this.point = new Point();
+            this.point.X = _x;
+            this.point.Y = _y;
+            this.Width = _width;
+            this.Height = _height;
+        }
         public override void Show(Canvas canvas1)
         {
             rect = new Polygon();

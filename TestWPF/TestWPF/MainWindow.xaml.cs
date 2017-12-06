@@ -120,5 +120,12 @@ namespace TestWPF
             window.Show();
             this.Close();
         }
+
+        private void MenuRandom_Click(object sender, RoutedEventArgs e)
+        {
+            MyRandom window = new MyRandom();
+            window.Show();
+            this.Close();
+        }
     }
 }

@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 
 namespace TestWPF
 {
-    class Lines
+    class Lines : TObject
     {
         public Point point1 { get; set; }
         public Point point2 { get; set; }
@@ -21,6 +21,15 @@ namespace TestWPF
         {
         }
 
+        public Lines(int _x1, int _y1, int _x2, int _y2)
+        {
+            this.point1 = new Point();
+            this.point2 = new Point();
+            this.point1.X = _x1;
+            this.point1.Y = _y1;
+            this.point2.X = _x2;
+            this.point1.Y = _y2;
+        }
         public Lines(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
         {
             point1 = new Point(textBox1, textBox2);

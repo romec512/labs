@@ -25,6 +25,15 @@ namespace TestWPF
             this.BigRadius = TFigure.GetData(textBox4);
         }
 
+        public Ring(int _x, int _y, int _smallRadius, int _bigRadius)
+        {
+            this.point = new Point();
+            this.point.X = _x;
+            this.point.Y = _y;
+            this.SmallRadius = _smallRadius;
+            this.BigRadius = _bigRadius;
+        }
+
         public Ring()
         {
 

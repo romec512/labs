@@ -22,6 +22,14 @@ namespace TestWPF
             Height = TFigure.GetData(textBox4);
         }
 
+        public Rectangles(int _x, int _y, int _width, int _height)
+        {
+            this.point = new Point();
+            this.point.X = _x;
+            this.point.Y = _y;
+            this.Width = _width;
+            this.Height = _height;
+        }
         public Rectangles()
         {
 

@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace TestWPF
 {
-    abstract class TFigure
+    abstract class TFigure : TObject
     {
         public Point point { get; set; }
         public float Width { get; set; }

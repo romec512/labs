@@ -17,9 +17,10 @@ namespace TestWPF
 
         public Circle(float _x, float _y, int _radius)
         {
-            point.X = _x;
-            point.Y = _y;
-            Radius = _radius;
+            this.point = new Point();
+            this.point.X = _x;
+            this.point.Y = _y;
+            this.Radius = _radius;
         }
 
         public Circle(TextBox textBoxShow1, TextBox textBoxShow2, TextBox textBoxShow3)
