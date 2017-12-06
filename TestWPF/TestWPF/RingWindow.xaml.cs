@@ -32,7 +32,13 @@ namespace TestWPF
         {
             if (TFigure.IsInto(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4))
             {
-                rings.Add(new Ring(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4));
+                Ring r = new Ring(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4);
+                if (r.point.X == -1 || r.point.Y == -1 || r.SmallRadius == -1 || r.BigRadius == -1 || r.SmallRadius >= r.BigRadius)
+                {
+                    MessageBox.Show("Invalid input data!");
+                    return;
+                }
+                rings.Add(r);
                 ComboBoxItem item1 = new ComboBoxItem();
                 ComboBoxItem item2 = new ComboBoxItem();
                 item1.Content = "Кольцо " + i;
@@ -59,7 +65,7 @@ namespace TestWPF
                     if(TFigure.IsInto(ring.point.X, ring.point.Y, textBoxChange2, textBoxChange2))
                         ring.ChangeRing(textBoxChange1, textBoxChange2);
                 }
-                ring.Show(canvas1);
+                    ring.Show(canvas1);
                 i++;
             }
         }
@@ -95,9 +101,12 @@ namespace TestWPF
                 if(moveNum == i)
                 {
                     if(TFigure.IsInto(textBoxMove1, textBoxMove2, ring.BigRadius, ring.BigRadius))
-                        ring.Move(textBoxMove1, textBoxMove2);
+                        ring.Move(textBoxMove1, textBoxMove2, canvas1);
                 }
-                ring.Show(canvas1);
+                else
+                {
+                    ring.Show(canvas1);
+                }
                 i++;
             }
         }

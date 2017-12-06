@@ -33,14 +33,20 @@ namespace TestWPF
         {
             if (TFigure.IsInto(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4))
             {
-                rhombus.Add(new Rhombus(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4));
+                Rhombus r = new Rhombus(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4);
+                if ((r.point.X == -1) || (r.point.Y == -1) || (r.Width == -1) || (r.Height == -1))
+                {
+                    MessageBox.Show("Invalid input data!");
+                    return;
+                }
+                rhombus.Add(r);
                 ComboBoxItem item1 = new ComboBoxItem();
                 ComboBoxItem item2 = new ComboBoxItem();
                 item1.Content = "Ромб " + i;
                 item2.Content = item1.Content;
                 comboBox1.Items.Add(item1);
                 comboBox2.Items.Add(item2);
-                foreach (Rectangles rhomb in rhombus)
+                foreach (Rhombus rhomb in rhombus)
                 {
                     rhomb.Show(canvas1);
                 }
@@ -53,12 +59,17 @@ namespace TestWPF
             canvas1.Children.Clear();
             int i = 0;
             int MoveNum = comboBox1.SelectedIndex;
-            foreach (Rectangles rhomb in rhombus)
+            foreach (Rhombus rhomb in rhombus)
             {
                 if (MoveNum == i)
+                {
                     if (TFigure.IsInto(textBoxMove1, textBoxMove2, rhomb.Width, rhomb.Height))
-                        rhomb.Move(textBoxMove1, textBoxMove2);
-                rhomb.Show(canvas1);
+                        rhomb.Move(textBoxMove1, textBoxMove2, canvas1);
+                }
+                else
+                {
+                    rhomb.Show(canvas1);
+                }
                 i++;
             }
         }
@@ -68,11 +79,11 @@ namespace TestWPF
             canvas1.Children.Clear();
             int i = 0;
             int ChangeNum = comboBox2.SelectedIndex;
-            foreach (Rectangles rhomb in rhombus)
+            foreach (Rhombus rhomb in rhombus)
             {
                 if (ChangeNum == i)
                     if (TFigure.IsInto(rhomb.point.X, rhomb.point.Y, textBoxChange1, textBoxChange2))
-                        rhomb.ChangeRectangle(textBoxChange1, textBoxChange2);
+                        rhomb.ChangeSize(textBoxChange1, textBoxChange2);
                 rhomb.Show(canvas1);
                 i++;
             }

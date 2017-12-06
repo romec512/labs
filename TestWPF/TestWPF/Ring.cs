@@ -32,11 +32,6 @@ namespace TestWPF
 
         public override void Show(Canvas canvas1)
         {
-            if(point.X == -1 || point.Y == -1 || SmallRadius == -1 || BigRadius == -1 || SmallRadius >= BigRadius)
-            {
-                MessageBox.Show("Invalid input data!");
-                return;
-            }
             bigEl = new Ellipse();
             smallEl = new Ellipse();
             bigEl.Width = BigRadius;
@@ -57,20 +52,17 @@ namespace TestWPF
             canvas1.Children.Add(smallEl);
         }
 
-        public override void Move(TextBox textBox1, TextBox textBox2)
-        {
-            point.ChangePoint(textBox1, textBox2);            
-        }
-
         public void ChangeRing(TextBox textBoxChange1, TextBox textBoxChange2)
         {
-            this.SmallRadius = TFigure.GetData(textBoxChange1);
-            this.BigRadius = TFigure.GetData(textBoxChange2);
-            if(this.SmallRadius == -1 || this.BigRadius == -1 || this.SmallRadius >= this.BigRadius)
+            int SmallRadius = TFigure.GetData(textBoxChange1);
+            int BigRadius = TFigure.GetData(textBoxChange2);
+            if(SmallRadius == -1 || BigRadius == -1 || SmallRadius >= BigRadius)
             {
                 MessageBox.Show("Invalid input data!");
                 return;
             }
+            this.SmallRadius = SmallRadius;
+            this.BigRadius = BigRadius;
         }
     }
 }

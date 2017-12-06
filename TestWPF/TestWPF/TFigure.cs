@@ -16,8 +16,15 @@ namespace TestWPF
         public float Height { get; set; }
         public float Radius { get; set; }
 
-        public abstract void Show(Canvas canvas1);
-        public abstract void Move(TextBox textBoxMove1, TextBox textBoxMove2);
+        public virtual void Show(Canvas canvas1)
+        {
+
+        }
+        public void Move(TextBox textBoxMove1, TextBox textBoxMove2, Canvas canvas1)
+        {
+            point.ChangePoint(textBoxMove1, textBoxMove2);
+            this.Show(canvas1);
+        }
         public static int GetData(TextBox t) //Метод для получения значения из textbox
         {
             int x = -1;

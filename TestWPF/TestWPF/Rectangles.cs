@@ -30,25 +30,15 @@ namespace TestWPF
 
         public override void Show(Canvas canvas1)
         { 
-            if ((point.X == -1) || (point.Y == -1) || (Width == -1) || (Height == -1))
-            {
-                MessageBox.Show("Invalid input data!");
-                return;
-            }
             rect = new Rectangle();
             rect.Width = Width;
             rect.Height = Height;
             rect.Margin = new Thickness(point.X, point.Y, 0, 0);
             rect.VerticalAlignment = VerticalAlignment.Top;
-            rect.Stroke = Brushes.Red;
+            rect.Stroke = Brushes.Blue;
             rect.StrokeThickness = 3;
             canvas1.Children.Add(rect);
-        }
-
-        public override void Move(TextBox textBox1, TextBox textBox2)
-        {
-            point.ChangePoint(textBox1, textBox2);
-        }
+        }        
 
         public void ChangeRectangle(TextBox textBox1, TextBox textBox2)
         {

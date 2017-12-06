@@ -30,7 +30,13 @@ namespace TestWPF
         {
             if (TFigure.IsInto(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4))
             {
-                rectangles.Add(new Rectangles(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4));
+                Rectangles rectangle = new Rectangles(textBoxShow1, textBoxShow2, textBoxShow3, textBoxShow4);
+                if ((rectangle.point.X == -1) || (rectangle.point.Y == -1) || (rectangle.Width == -1) || (rectangle.Height == -1))
+                {
+                    MessageBox.Show("Invalid input data!");
+                    return;
+                }
+                rectangles.Add(rectangle);
                 ComboBoxItem item1 = new ComboBoxItem();
                 ComboBoxItem item2 = new ComboBoxItem();
                 item1.Content = "Прямоугольник " + i;
@@ -52,10 +58,15 @@ namespace TestWPF
             int MoveNum = comboBox1.SelectedIndex;
             foreach (Rectangles rect in rectangles)
             {
-                if(MoveNum == i)
-                    if(TFigure.IsInto(textBoxMove1, textBoxMove2, rect.Width, rect.Height))
-                        rect.Move(textBoxMove1, textBoxMove2);
-                rect.Show(canvas1);
+                if (MoveNum == i)
+                {
+                    if (TFigure.IsInto(textBoxMove1, textBoxMove2, rect.Width, rect.Height))
+                        rect.Move(textBoxMove1, textBoxMove2, canvas1);
+                }
+                else
+                {
+                    rect.Show(canvas1);
+                }
                 i++;
             }
         }
@@ -67,10 +78,12 @@ namespace TestWPF
             int ChangeNum = comboBox2.SelectedIndex;
             foreach (Rectangles rect in rectangles)
             {
-                if(ChangeNum == i)
-                    if(TFigure.IsInto(rect.point.X, rect.point.Y, textBoxChange1, textBoxChange2))
+                if (ChangeNum == i)
+                {
+                    if (TFigure.IsInto(rect.point.X, rect.point.Y, textBoxChange1, textBoxChange2))
                         rect.ChangeRectangle(textBoxChange1, textBoxChange2);
-                rect.Show(canvas1);
+                }
+                    rect.Show(canvas1);
                 i++;
             }
         }

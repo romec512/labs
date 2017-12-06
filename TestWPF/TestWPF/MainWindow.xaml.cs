@@ -34,7 +34,13 @@ namespace TestWPF
         {
             if (TFigure.IsInto(textBoxShow1, textBoxShow2, textBoxShow3))
             {
-                circles.Add(new Circle(textBoxShow1, textBoxShow2, textBoxShow3));
+                Circle circ = new Circle(textBoxShow1, textBoxShow2, textBoxShow3);
+                if ((circ.point.X == -1) || (circ.point.Y == -1) || (circ.Radius == -1))
+                {
+                    MessageBox.Show("Invalid input data!");
+                    return;
+                }
+                circles.Add(circ);
                 ComboBoxItem item1 = new ComboBoxItem();
                 ComboBoxItem item2 = new ComboBoxItem();
                 item1.Content = "Окружность " + i;
@@ -60,9 +66,12 @@ namespace TestWPF
                 if (i == MoveNum)
                 {
                     if(TFigure.IsInto(textBoxMove1, textBoxMove2, circle.Radius))
-                        circle.Move(textBoxMove1, textBoxMove2);
+                        circle.Move(textBoxMove1, textBoxMove2, canvas1);
                 }
-                circle.Show(canvas1);
+                else
+                {
+                    circle.Show(canvas1);
+                }
                i++;
             }
         }

@@ -10,40 +10,43 @@ using System.Windows.Shapes;
 
 namespace TestWPF
 {
-    class Rhombus : Rectangles
+    class Rhombus : TFigure
     {
-        private Rectangle rect;
-        public Rhombus(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4):base(textBox1, textBox2, textBox3, textBox4)
+        private Polygon rect;
+        public Rhombus(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
         {
             point = new Point();
             float x = point.GetData(textBox1);
             float y = point.GetData(textBox2);
             Width = TFigure.GetData(textBox3);
             Height = TFigure.GetData(textBox4);
-            point.X = x + (float)Math.Sqrt(Width * Width + Height * Height) / 2;
+            point.X = x;
             point.Y = y;
         }
         public override void Show(Canvas canvas1)
         {
-            if ((point.X == -1) || (point.Y == -1) || (Width == -1) || (Height == -1))
-            {
-                MessageBox.Show("Invalid input data!");
-                return;
-            }
-            rect = new Rectangle();
-            rect.Width = Width;
-            rect.Height = Height;
-            rect.Margin = new Thickness(this.point.X, this.point.Y, 0, 0);
+            rect = new Polygon();
+            rect.Points.Add(new System.Windows.Point(point.X + Width, point.Y+Height/2));
+            rect.Points.Add(new System.Windows.Point(point.X + Width / 2, point.Y));
+            rect.Points.Add(new System.Windows.Point(point.X, point.Y + Height / 2));
+            rect.Points.Add(new System.Windows.Point(point.X + Width / 2, point.Y + Height));
             rect.VerticalAlignment = VerticalAlignment.Top;
-            rect.Stroke = Brushes.Red;
+            rect.Stroke = Brushes.Blue;
             rect.StrokeThickness = 3;
-            rect.RenderTransform = new RotateTransform(45);
             canvas1.Children.Add(rect);
         }
 
-        public override void Move(TextBox textBox1, TextBox textBox2)
+        public void ChangeSize(TextBox textBox1, TextBox textBox2)
         {
-            point.ChangePoint(textBox1, textBox2);
+            int _width = TFigure.GetData(textBox1);
+            int _height = TFigure.GetData(textBox2);
+            if(_width == -1 || _height == -1)
+            {
+                MessageBox.Show("Ошибочка вышла!");
+                return;
+            }
+            this.Width = _width;
+            this.Height = _height;
         }
 
     }
