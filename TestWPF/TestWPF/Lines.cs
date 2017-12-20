@@ -51,11 +51,11 @@ namespace TestWPF
 
         public void ShowLine(Canvas canvas1)
         {
-            if ((point1.X == -1) || (point1.Y == -1) || (point2.X == -1) || (point2.Y == -1))
-            {
-                MessageBox.Show("Invalid input data!");
-                return;
-            }
+            //if ((point1.X == -1) || (point1.Y == -1) || (point2.X == -1) || (point2.Y == -1))
+            //{
+            //    MessageBox.Show("Invalid input data!");
+            //    return;
+            //}
             line = new Line();
             line.X1 = point1.X;
             line.X2 = point2.X;
@@ -70,6 +70,14 @@ namespace TestWPF
         {
             point1.ChangePoint(textBox1, textBox2);
             point2.ChangePoint(textBox3, textBox4);
+        }
+
+        public void ChangeLine(TextBox textBox1, TextBox textBox2)
+        {
+            point1.X = this.GetData(textBox1);
+            point1.Y = this.GetData(textBox2);
+            point2.X = point1.X + 100;
+            point2.Y = point1.Y + 100;
         }
     }
 }

@@ -30,7 +30,7 @@
             <Canvas Name="canvas1" Background="White"/>
         </Border>
         <Button x:Name="buttonMove" Content="Move" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonMove_Click"/>
-        <Button x:Name="buttonDestroy" Content="Destroy" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonDestroy_Click"/>
+        <Button x:Name="buttonDestroy" Content="Destroy" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonDestroy_Click"/>
         <Menu x:Name="menu"  HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="53">
             <MenuItem Header="Фигура" RenderTransformOrigin="0.5,0.5">
                 <MenuItem Header="Окружность" Click="MenuCircle_Click"/>
@@ -44,5 +44,8 @@
         <Button x:Name="buttonCreate" Content="Create" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonCreate_Click"/>
         <Button x:Name="buttonShow" Content="Show" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonShow_Click"/>
         <Button x:Name="buttonClean" Content="Clean" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonClean_Click"/>
+        <TextBox x:Name="textBoxX" HorizontalAlignment="Left" Height="23" Margin="136,60,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxY" HorizontalAlignment="Left" Height="23" Margin="136,94,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="buttonMoveOne" Content="Move figure" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="107" Height="32" Background="PapayaWhip" Click="buttonMoveOne_Click"/>
     </Grid>
 </Window>

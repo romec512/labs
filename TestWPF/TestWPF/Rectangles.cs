@@ -14,6 +14,11 @@ namespace TestWPF
     class Rectangles : TFigure
     {
         Rectangle rect;
+        public double Angle { get; set; } = 0;
+        private bool rotated = false;
+
+        public static float MaxWidth = 0;
+        public static float MaxHeight = 0;
 
         public Rectangles(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
         {
@@ -39,12 +44,48 @@ namespace TestWPF
         public override void Show(Canvas canvas1)
         { 
             rect = new Rectangle();
-            rect.Width = Width;
-            rect.Height = Height;
-            rect.Margin = new Thickness(point.X, point.Y, 0, 0);
-            rect.VerticalAlignment = VerticalAlignment.Top;
-            rect.Stroke = Brushes.Blue;
-            rect.StrokeThickness = 3;
+            if (this.point.X + Rectangles.MaxWidth > canvas1.ActualWidth && this.point.Y + Rectangles.MaxHeight > canvas1.ActualHeight)
+            {
+                rect.RenderTransform = new RotateTransform(180);
+                rect.Width = Width;
+                rect.Height = Height;
+                rect.Margin = new Thickness(canvas1.ActualWidth, canvas1.ActualHeight - 45, 0, 0);
+                rect.VerticalAlignment = VerticalAlignment.Top;
+                rect.Stroke = Brushes.Blue;
+                rect.StrokeThickness = 3;
+                this.rotated = true;
+            }
+            else if (this.point.Y + Rectangles.MaxHeight > canvas1.ActualHeight)
+            {
+                rect.RenderTransform = new RotateTransform(270);
+                rect.Width = Width;
+                rect.Height = Height;
+                rect.Margin = new Thickness(0, canvas1.ActualHeight-45, 0, 0);
+                rect.VerticalAlignment = VerticalAlignment.Top;
+                rect.Stroke = Brushes.Blue;
+                rect.StrokeThickness = 3;
+                this.rotated = true;
+            }
+            else if(this.point.X + Rectangles.MaxWidth > canvas1.ActualWidth)
+            {
+                rect.RenderTransform = new RotateTransform(90);
+                rect.Width = Width;
+                rect.Height = Height;
+                rect.Margin = new Thickness(canvas1.ActualWidth, 0, 0, 0);
+                rect.VerticalAlignment = VerticalAlignment.Top;
+                rect.Stroke = Brushes.Blue;
+                rect.StrokeThickness = 3;
+                this.rotated = true;
+            }
+            else
+            {
+                rect.Width = Width;
+                rect.Height = Height;
+                rect.Margin = new Thickness(point.X, point.Y, 0, 0);
+                rect.VerticalAlignment = VerticalAlignment.Top;
+                rect.Stroke = Brushes.Blue;
+                rect.StrokeThickness = 3;
+            }
             canvas1.Children.Add(rect);
         }        
 

@@ -17,6 +17,7 @@ namespace TestWPF
         public int BigRadius { get; set; }
         private Ellipse bigEl;
         private Ellipse smallEl;
+        public static float MaxRadius = 0;
 
         public  Ring(TextBox textBox1, TextBox textBox2, TextBox textBox3, TextBox textBox4)
         {
@@ -43,20 +44,84 @@ namespace TestWPF
         {
             bigEl = new Ellipse();
             smallEl = new Ellipse();
-            bigEl.Width = BigRadius;
-            bigEl.Height = BigRadius;
-            smallEl.Width = SmallRadius;
-            smallEl.Height = SmallRadius;
-            bigEl.Margin = new Thickness(point.X, point.Y, 0, 0);
-            smallEl.Margin = new Thickness(point.X + BigRadius/2 - SmallRadius/2, point.Y + BigRadius / 2 - SmallRadius / 2, 0, 0);
-            bigEl.VerticalAlignment = VerticalAlignment.Top;
-            smallEl.VerticalAlignment = VerticalAlignment.Top;
-            bigEl.Stroke = Brushes.Red;
-            smallEl.Stroke = Brushes.White;
-            bigEl.StrokeThickness = 3;
-            smallEl.StrokeThickness = 3;
-            bigEl.Fill = Brushes.Red;
-            smallEl.Fill = Brushes.White;
+            if (point.X + Ring.MaxRadius > canvas1.ActualWidth && point.Y + Ring.MaxRadius > canvas1.ActualHeight)
+            {
+
+                bigEl.Width = BigRadius;
+                bigEl.Height = BigRadius;
+                smallEl.Width = SmallRadius;
+                smallEl.Height = SmallRadius;
+                bigEl.Margin = new Thickness(canvas1.ActualWidth - BigRadius, canvas1.ActualHeight - 45 - BigRadius, 0, 0);
+                smallEl.Margin = new Thickness(canvas1.ActualWidth - BigRadius / 2 - SmallRadius / 2, canvas1.ActualHeight -45 - BigRadius / 2 - SmallRadius / 2, 0, 0);
+                bigEl.VerticalAlignment = VerticalAlignment.Top;
+                smallEl.VerticalAlignment = VerticalAlignment.Top;
+                bigEl.Stroke = Brushes.Red;
+                smallEl.Stroke = Brushes.White;
+                bigEl.StrokeThickness = 3;
+                smallEl.StrokeThickness = 3;
+                bigEl.Fill = Brushes.Red;
+                smallEl.Fill = Brushes.White;
+                bigEl.Opacity = 0.3;
+                smallEl.Opacity = 0.6;
+            }
+            else if(point.X + Ring.MaxRadius > canvas1.ActualWidth)
+            {
+                bigEl.Width = BigRadius;
+                bigEl.Height = BigRadius;
+                smallEl.Width = SmallRadius;
+                smallEl.Height = SmallRadius;
+                bigEl.Margin = new Thickness(canvas1.ActualWidth - BigRadius, 0 , 0, 0);
+                smallEl.Margin = new Thickness(canvas1.ActualWidth - BigRadius / 2 - SmallRadius / 2,  BigRadius / 2 - SmallRadius / 2, 0, 0);
+                bigEl.VerticalAlignment = VerticalAlignment.Top;
+                smallEl.VerticalAlignment = VerticalAlignment.Top;
+                bigEl.Stroke = Brushes.Red;
+                smallEl.Stroke = Brushes.White;
+                bigEl.StrokeThickness = 3;
+                smallEl.StrokeThickness = 3;
+                bigEl.Fill = Brushes.Red;
+                smallEl.Fill = Brushes.White;
+                bigEl.Opacity = 0.3;
+                smallEl.Opacity = 0.6;
+            }
+            else if(point.Y + Ring.MaxRadius > canvas1.ActualHeight)
+            {
+                bigEl.Width = BigRadius;
+                bigEl.Height = BigRadius;
+                smallEl.Width = SmallRadius;
+                smallEl.Height = SmallRadius;
+                bigEl.Margin = new Thickness(0, canvas1.ActualHeight -45 - BigRadius, 0, 0);
+                smallEl.Margin = new Thickness(BigRadius / 2 - SmallRadius / 2, canvas1.ActualHeight - 45 - BigRadius / 2 - SmallRadius / 2, 0, 0);
+                bigEl.VerticalAlignment = VerticalAlignment.Top;
+                smallEl.VerticalAlignment = VerticalAlignment.Top;
+                bigEl.Stroke = Brushes.Red;
+                smallEl.Stroke = Brushes.White;
+                bigEl.StrokeThickness = 3;
+                smallEl.StrokeThickness = 3;
+                bigEl.Fill = Brushes.Red;
+                smallEl.Fill = Brushes.White;
+                bigEl.Opacity = 0.3;
+                smallEl.Opacity = 0.6;
+            }
+            else
+            {
+                bigEl.Width = BigRadius;
+                bigEl.Height = BigRadius;
+                smallEl.Width = SmallRadius;
+                smallEl.Height = SmallRadius;
+                bigEl.Margin = new Thickness(point.X, point.Y, 0, 0);
+                smallEl.Margin = new Thickness(point.X + BigRadius / 2 - SmallRadius / 2, point.Y + BigRadius / 2 - SmallRadius / 2, 0, 0);
+                bigEl.VerticalAlignment = VerticalAlignment.Top;
+                smallEl.VerticalAlignment = VerticalAlignment.Top;
+                bigEl.Stroke = Brushes.Red;
+                smallEl.Stroke = Brushes.White;
+                bigEl.StrokeThickness = 3;
+                smallEl.StrokeThickness = 3;
+                bigEl.Fill = Brushes.Red;
+                smallEl.Fill = Brushes.White;
+                bigEl.Opacity = 0.3;
+                smallEl.Opacity = 0.6;
+            }
+
             canvas1.Children.Add(bigEl);
             canvas1.Children.Add(smallEl);
         }
