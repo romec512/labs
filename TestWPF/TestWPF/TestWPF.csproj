@@ -54,10 +54,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Containers.xaml.cs">
+      <DependentUpon>Containers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lines.cs" />
     <Compile Include="LineWindow.xaml.cs">
       <DependentUpon>LineWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MassContainer.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="MyRandom.xaml.cs">
       <DependentUpon>MyRandom.xaml</DependentUpon>
@@ -76,6 +80,10 @@
     </Compile>
     <Compile Include="TFigure.cs" />
     <Compile Include="TObject.cs" />
+    <Page Include="Containers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LineWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

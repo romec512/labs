@@ -49,6 +49,7 @@
                 <MenuItem Header="Кольцо" Click="menuRing_Click"/>
                 <MenuItem Header="Ромб" Click="MenuRhombus_Click"/>
                 <MenuItem Header="Рандом" Click="MenuRandom_Click"/>
+                <MenuItem Header="Контейнеры" Click="MenuContainer_Click"/>
             </MenuItem>
         </Menu>
         <ComboBox HorizontalAlignment="Left" Name="comboBox1" Margin="145,130,0,0" VerticalAlignment="Top" Width="120" Text="Выберите окружность" />

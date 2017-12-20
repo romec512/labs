@@ -127,5 +127,12 @@ namespace TestWPF
             window.Show();
             this.Close();
         }
+        
+        private void MenuContainer_Click(object sender, RoutedEventArgs e)
+        {
+            Containers window = new Containers();
+            window.Show();
+            this.Close();
+        }
     }
 }
