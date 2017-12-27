@@ -5,12 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPF"
         mc:Ignorable="d"
-        Title="Containers" Height="418.421" Width="1366" WindowState="Maximized">
-    <Grid HorizontalAlignment="Left" Width="1356">
-        <Button x:Name="buttonShow" Content="Show" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="75" Click="buttonShow_Click" Height="20"/>
-        <Canvas x:Name="canvas" Margin="128,0,0,0"/>
-        <Button x:Name="buttonCreate" Content="Create" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="75" Click="buttonCreate_Click" Height="20"/>
-        <Button x:Name="buttonAdd" Content="Add" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdd_Click" Height="20"/>
-        <Button x:Name="buttonMove" Content="Move" Margin="0,88,1271,0" VerticalAlignment="Top" Click="buttonMove_Click" Height="20" HorizontalAlignment="Right" Width="75"/>
+        Title="Containers" Height="702.421" Width="1366" WindowState="Maximized">
+    <Grid Margin="10,0,-8,-58" HorizontalAlignment="Left" Width="1356">
+        <Button x:Name="buttonShow" Content="Show" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="75" Click="buttonShow_Click" Height="20"/>
+        <Canvas x:Name="canvas" Margin="258,0,0,32" />
+        <Button x:Name="buttonCreate" Content="Create" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="75" Click="buttonCreate_Click" Height="20"/>
+        <Button x:Name="buttonAdd" Content="Add" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdd_Click" Height="20"/>
+        <Button x:Name="buttonMove" Content="Move" Margin="0,120,1271,0" VerticalAlignment="Top" Click="buttonMove_Click" Height="20" HorizontalAlignment="Right" Width="75"/>
+        <Button x:Name="buttonHide" Content="Hide" Margin="0,145,1271,0" VerticalAlignment="Top" Click="buttonHide_Click" Height="20" HorizontalAlignment="Right" Width="75"/>
+        <Button x:Name="buttonDelete" Content="Delete" Margin="0,170,1271,0" VerticalAlignment="Top" Click="buttonDelete_Click" Height="20" HorizontalAlignment="Right" Width="75"/>
+        <ComboBox x:Name="typeOfContainer" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="0,212,0,0"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="0,240,0,0"/>
+
     </Grid>
 </Window>

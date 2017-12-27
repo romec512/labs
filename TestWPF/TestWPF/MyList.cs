@@ -1,56 +1,32 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace TestWPF
 {
-    class MassContainer
+    class MyList
     {
-        private ArrayList figures;
-        public int Count { get { return _count; } }
-        private int _count;
-        public MassContainer()
+        private ListItems Head;
+        private ListItems Tail;
+        public int Count { get; set; }
+        public MyList()
         {
-            figures = new ArrayList();
-            _count = 0;
         }
 
-        private void Iterator(string str,Canvas canvas = null, TextBox textBoxX = null, TextBox textBoxY = null)
-        {
-            foreach(TFigure fig in figures)
-            {
-                switch(str)
-                {
-                    case "show":
-                        fig.Show(canvas);
-                        break;
-                    case "move":
-                        fig.Move(textBoxX, textBoxY, canvas);
-                        break;
-                    case "delete":
-                        figures.Clear();
-                        MessageBox.Show("Вы удалили все объекты");
-                        return;
-                        break;
-                }
-            }
-        }
         public void Add(TFigure figure)
         {
-            figures.Add(figure);
-            if(figure is Circle)
+            ListItems item = new ListItems(figure);
+            if (figure is Circle)
             {
                 if ((figure as Circle).Radius > Circle.MaxRadius)
                 {
                     Circle.MaxRadius = (figure as Circle).Radius;
                 }
             }
-            else if(figure is Rectangles)
+            else if (figure is Rectangles)
             {
                 if ((figure as Rectangles).Width > Rectangles.MaxWidth)
                 {
@@ -61,14 +37,14 @@ namespace TestWPF
                     Rectangles.MaxHeight = (figure as Rectangles).Height;
                 }
             }
-            else if(figure is Ring)
+            else if (figure is Ring)
             {
                 if ((figure as Ring).BigRadius > Ring.MaxRadius)
                 {
                     Ring.MaxRadius = (figure as Ring).BigRadius;
                 }
             }
-            else if(figure is Rhombus)
+            else if (figure is Rhombus)
             {
                 if ((figure as Rhombus).Width > Rhombus.MaxWidth)
                 {
@@ -79,20 +55,42 @@ namespace TestWPF
                     Rhombus.MaxHeight = (figure as Rhombus).Height;
                 }
             }
-            _count++;
+            if (this.Head == null)
+            {
+                this.Head = item;
+            }
+            else
+            {
+                this.Tail.Next = item;
+            }
+            this.Tail = item;
+            Count++;
         }
 
         public void Show(Canvas canvas)
         {
-            this.Iterator("show",canvas);
+            ListItems current = this.Head;
+            while(current != null)
+            {
+                current.Figure.Show(canvas);
+                current = current.Next;
+            }
         }
-        public void Move(TextBox textBoxX, TextBox textBoxY, Canvas canvas)
+
+        public void Move(TextBox textBox1, TextBox textBox2, Canvas canvas)
         {
-            this.Iterator("move",canvas, textBoxX, textBoxY);
+            ListItems current = this.Head;
+            while (current != null)
+            {
+                current.Figure.Move(textBox1, textBox2, canvas);
+                current = current.Next;
+            }
         }
+
         public void Delete()
         {
-            this.Iterator("delete");
+            this.Head = null;
+            this.Tail = null;
         }
     }
 }
